@@ -71,7 +71,9 @@ class ColorDefinitions:
         # convert the palette into alternative RGB format
         self.make_rgb_palette()
         # chart borders should have transparency:
-        self.chartBordersRGBA = sns.external.husl.hex_to_rgb(self.chartDemarcation)
+        self.chartBordersRGBA = sns.external.husl.hex_to_rgb(
+            self.cget("chartDemarcation")
+        )
         # set the transparency to 0.80 (alpha=0.20)
         self.chartBordersRGBA.append(0.20)
 
@@ -149,6 +151,18 @@ class ColorDefinitions:
 
         return mpl.colors.ListedColormap(cmap_gradient)
 
+    def cget(self, color_name):
+
+        """
+        cget
+
+        Convenience method: looks up a color in the definitions dict and
+        returns the appropriate hexcode
+
+        """
+
+        return self.apol_color_lookup.get(color_name)
+
     def generate_aliases(self):
 
         """
@@ -179,8 +193,11 @@ class ColorDefinitions:
 
         """
 
-        self.apolCM = self.cmap_between(self.whiteTeal, self.blueTeal)
-        self.barGradientCM = self.cmap_between(self.greenTeal", self.blueTeal)
+        self.apolCM = self.cmap_between(self.cget("whiteTeal"), self.cget("blueTeal"))
+
+        self.barGradientCM = self.cmap_between(
+            self.cget("greenTeal"), self.cget("blueTeal")
+        )
 
         # register these colormaps
         mpl.cm.register_cmap(name="apol", cmap=self.apolCM)
