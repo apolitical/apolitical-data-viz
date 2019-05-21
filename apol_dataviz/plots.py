@@ -3,13 +3,15 @@
 # Therefore be aware that importing these functions has that side-effect, i.e. the
 # Apolitical house style will be set upon import.
 
-import numpy as np
-
 from apol_dataviz.style import use_apol_style
 use_apol_style()
 
 from apol_dataviz.colors import ColorDefinitions
 color_definitions = ColorDefinitions()
+
+import numpy as np
+import matplotlib.pyplot as plt; plt.ion()
+import seaborn as sns
 
 def doughnut(data, kind="categorical", sortvals=True, hole_radius=0.6):
 
