@@ -2,4 +2,4 @@
 
 __version__ = "0.0.1"
 
-from apol_dataviz import colab, colours, style, plots, palette_generators, formatters
+from apol_dataviz import colab, colors, style, plots, palette_generators, formatters

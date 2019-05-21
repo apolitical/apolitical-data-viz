@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt; plt.ion()
 import seaborn as sns; sns.set_color_codes()
 
 from apol_dataviz.colab import download_lato_font
-from apol_dataviz.colours import ColourDefinitions
+from apol_dataviz.colors import ColorDefinitions
 
 def use_apol_style():
 
@@ -17,8 +17,8 @@ def use_apol_style():
 
     download_lato_font() # takes no action if not running in a Google Colab notebook
 
-    cd = ColourDefinitions()
-    cd.apply_definitions()   # register colours and colourmaps with matplotlib
+    cd = ColorDefinitions()
+    cd.apply_definitions()   # register colors and colormaps with matplotlib
 
     apol_labelsize = 16
     apol_titlesize = 18

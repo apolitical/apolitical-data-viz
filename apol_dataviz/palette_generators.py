@@ -1,15 +1,15 @@
-# Please note: these functions only work properly if the colour definitions have been set.
+# Please note: these functions only work properly if the color definitions have been set.
 # Therefore be aware that importing these functions has that side-effect.
 
 import numpy as np
 import seaborn as sns
 
-from apol_dataviz.colours import ColourDefinitions
+from apol_dataviz.colors import ColorDefinitions
 
 hex2husl = sns.external.husl.hex_to_husl
 husl2hex = sns.external.husl.husl_to_hex
 
-cd = ColourDefinitions()
+cd = ColorDefinitions()
 cd.apply_definitions()
 
 def apol_teal_pal(N=4, reverse=False):
@@ -20,7 +20,7 @@ def apol_teal_pal(N=4, reverse=False):
     Function that gets a sequential palette in blueTeal
 
     KEYWORDS:
-        N = 4 - return 4 sequential colours unless specified
+        N = 4 - return 4 sequential colors unless specified
         reverse = False - light to dark unless true
 
     OUTPUTS:
@@ -42,7 +42,7 @@ def apol_navy_pal(N=4, reverse=False):
     Function that gets a sequential palette in navyBlue
 
     KEYWORDS:
-        N = 4 - return 4 sequential colours unless specified
+        N = 4 - return 4 sequential colors unless specified
         reverse = False - light to dark unless true
 
     OUTPUTS:
@@ -56,27 +56,27 @@ def apol_navy_pal(N=4, reverse=False):
     pair = [pale, dark] if not reverse else [dark, pale]
     return sns.palettes.blend_palette(pair, N)
 
-def spaced_hue_palette(n_col=5, base_colour=cd.blueTeal):
+def spaced_hue_palette(n_col=5, base_color=cd.blueTeal):
 
     """
     spaced_hue_palette
 
-    The HuSL system is a neat way of creating colour palettes that have a
+    The HuSL system is a neat way of creating color palettes that have a
     uniform apparent brightness. This function returns such a palette
-    that includes one chosen colour. The colours are evenly spaced in
+    that includes one chosen color. The colors are evenly spaced in
     hue by default.
 
     KEYWORDS:
-        n_col = 5 - number of colours to have in the palette
-        base_colour = cd.blueTeal - starting point for palette generation
+        n_col = 5 - number of colors to have in the palette
+        base_color = cd.blueTeal - starting point for palette generation
 
     OUTPUTS:
-        hexcodes - list of colour hexcodes comprising a palette
+        hexcodes - list of color hexcodes comprising a palette
 
     """
 
-    # convert base_colour hexcode -> HuSL representation
-    H, S, L = hex2husl(base_colour)
+    # convert base_color hexcode -> HuSL representation
+    H, S, L = hex2husl(base_color)
 
     hues = np.linspace(0, 360, n_col, endpoint=False)
 
@@ -88,25 +88,25 @@ def spaced_hue_palette(n_col=5, base_colour=cd.blueTeal):
 
     return hexcodes
 
-def spaced_saturation_palette(n_col=5, base_colour=cd.blueTeal):
+def spaced_saturation_palette(n_col=5, base_color=cd.blueTeal):
 
     """
     spaced_saturation_palette
 
-    Returns a list (palette) of colours evenly spaced in saturation,
-    interpolating through a base colour
+    Returns a list (palette) of colors evenly spaced in saturation,
+    interpolating through a base color
 
     KEYWORDS:
-        n_col = 5 - number of colours to have in the palette
-        base_colour = cd.blueTeal - starting point for palette generation
+        n_col = 5 - number of colors to have in the palette
+        base_color = cd.blueTeal - starting point for palette generation
 
     OUTPUTS:
-        hexcodes - list of colour hexcodes comprising a palette
+        hexcodes - list of color hexcodes comprising a palette
 
     """
 
-    # convert base_colour hexcode -> HuSL representation
-    H, S, L = hex2husl(base_colour)
+    # convert base_color hexcode -> HuSL representation
+    H, S, L = hex2husl(base_color)
 
     sats = np.linspace(0, 100, n_col)
 
@@ -116,25 +116,25 @@ def spaced_saturation_palette(n_col=5, base_colour=cd.blueTeal):
 
     return hexcodes
 
-def spaced_lightness_palette(n_col=5, base_colour=cd.blueTeal):
+def spaced_lightness_palette(n_col=5, base_color=cd.blueTeal):
 
     """
     spaced_lightness_palette
 
-    Returns a list (palette) of colours evenly spaced in lightness,
-    interpolating through a base colour
+    Returns a list (palette) of colors evenly spaced in lightness,
+    interpolating through a base color
 
     KEYWORDS:
-        n_col = 5 - number of colours to have in the palette
-        base_colour = cd.blueTeal - starting point for palette generation
+        n_col = 5 - number of colors to have in the palette
+        base_color = cd.blueTeal - starting point for palette generation
 
     OUTPUTS:
-        hexcodes - list of colour hexcodes comprising a palette
+        hexcodes - list of color hexcodes comprising a palette
 
     """
 
-    # convert base_colour hexcode -> HuSL representation
-    H, S, L = hex2husl(base_colour)
+    # convert base_color hexcode -> HuSL representation
+    H, S, L = hex2husl(base_color)
 
     lis = np.linspace(0, 100, n_col)
 
@@ -144,25 +144,25 @@ def spaced_lightness_palette(n_col=5, base_colour=cd.blueTeal):
 
     return hexcodes
 
-def spaced_brightness_palette(n_col=5, base_colour=cd.blueTeal):
+def spaced_brightness_palette(n_col=5, base_color=cd.blueTeal):
 
     """
     spaced_brightness_palette
 
-    Returns a list (palette) of colours evenly spaced in lightness
-    and saturation, interpolating through a base colour
+    Returns a list (palette) of colors evenly spaced in lightness
+    and saturation, interpolating through a base color
 
     KEYWORDS:
-        n_col = 5 - number of colours to have in the palette
-        base_colour = cd.blueTeal - starting point for palette generation
+        n_col = 5 - number of colors to have in the palette
+        base_color = cd.blueTeal - starting point for palette generation
 
     OUTPUTS:
-        hexcodes - list of colour hexcodes comprising a palette
+        hexcodes - list of color hexcodes comprising a palette
 
     """
 
-    # convert base_colour hexcode -> HuSL representation
-    H, S, L = hex2husl(base_colour)
+    # convert base_color hexcode -> HuSL representation
+    H, S, L = hex2husl(base_color)
 
     lisats = np.linspace(0, 100, n_col)
 
@@ -172,40 +172,40 @@ def spaced_brightness_palette(n_col=5, base_colour=cd.blueTeal):
 
     return hexcodes
 
-def opposing_hue_palette(n_col=5, base_colour=cd.blueTeal):
+def opposing_hue_palette(n_col=5, base_color=cd.blueTeal):
 
     """
     opposing_hue_palette
 
-    Returns a diverging colour palette with a chosen base-colour on one
+    Returns a diverging color palette with a chosen base-color on one
     end, its opposing, equal-apparent-brightness hue on the other (via
     the HuSL system), interpolating through white in the middle. This
     will always be the central hue of the palette if the number of
-    colours in the palette is odd.
+    colors in the palette is odd.
 
     KEYWORDS:
-        n_col = 5 - number of colours to have in the palette
-        base_colour = cd.blueTeal - starting point for palette generation
+        n_col = 5 - number of colors to have in the palette
+        base_color = cd.blueTeal - starting point for palette generation
 
     OUTPUTS:
-        hexcodes - list of colour hexcodes comprising a palette
+        hexcodes - list of color hexcodes comprising a palette
 
     """
 
-    # convert base_colour hexcode -> HuSL representation
-    H, S, L = hex2husl(base_colour)
+    # convert base_color hexcode -> HuSL representation
+    H, S, L = hex2husl(base_color)
 
     H2 = H + 180
 
-    colours_per_arm = n_col // 2
+    colors_per_arm = n_col // 2
 
     require_midpoint = bool(n_col % 2) # do we need a midpoint?
 
-    saturations = np.linspace(S, 100, colours_per_arm + 1)[:-1]
-    lightnesses = np.linspace(L, 100, colours_per_arm + 1)[:-1]
+    saturations = np.linspace(S, 100, colors_per_arm + 1)[:-1]
+    lightnesses = np.linspace(L, 100, colors_per_arm + 1)[:-1]
 
-    arm1 = zip([H]*colours_per_arm, saturations, lightnesses)
-    arm2 = zip([H2]*colours_per_arm, saturations[::-1], lightnesses[::-1])
+    arm1 = zip([H]*colors_per_arm, saturations, lightnesses)
+    arm2 = zip([H2]*colors_per_arm, saturations[::-1], lightnesses[::-1])
 
     arm1hex = [husl2hex(h,s,l) for h,s,l in arm1]
     arm2hex = [husl2hex(h,s,l) for h,s,l in arm2]
