@@ -1,5 +1,7 @@
 # Please note: these functions only work properly if the colour definitions have been set.
 # Therefore be aware that importing these functions has that side-effect.
+
+import numpy as np
 import seaborn as sns
 
 from apol_dataviz.colours import ColourDefinitions
@@ -22,7 +24,8 @@ def apol_teal_pal(N=4, reverse=False):
         reverse = False - light to dark unless true
 
     OUTPUTS:
-        palette - list of hexcodes as strings
+        palette - list of RGBA tuples
+
     """
 
     pale = cd.cget("blueTealComplement")
@@ -43,7 +46,7 @@ def apol_navy_pal(N=4, reverse=False):
         reverse = False - light to dark unless true
 
     OUTPUTS:
-        palette - list of hexcodes as strings
+        palette - list of RGBA tuples
 
     """
 

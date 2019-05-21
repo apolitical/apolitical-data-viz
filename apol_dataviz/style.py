@@ -35,7 +35,7 @@ def use_apol_style():
         "axes.labelcolor": cd.chartLabels,
         "axes.labelweight": "bold",
         "axes.labelsize": apol_labelsize,
-        "axes.prop_cycle": mpl.cycler(color=cd.apolPaletteRGB),
+        "axes.prop_cycle": mpl.cycler(color=cd.apol_paletteRGB),
         "axes.spines.bottom": True,
         "axes.spines.left": True,
         "axes.spines.top": False,
