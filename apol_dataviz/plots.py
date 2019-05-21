@@ -6,8 +6,8 @@
 from apol_dataviz.style import use_apol_style
 use_apol_style()
 
-from apol_dataviz.colours import ColourDefinitions
-colour_definitions = ColourDefinitions()
+from apol_dataviz.colors import ColorDefinitions
+color_definitions = ColorDefinitions()
 
 def doughnut(data, kind="categorical", sortvals=True, hole_radius=0.6):
 
@@ -34,7 +34,7 @@ def doughnut(data, kind="categorical", sortvals=True, hole_radius=0.6):
         plotargs = {"labeldistance": 1.2}
 
     elif kind == "sequential":
-        # build a sequential palette, but soften the colour differences by one unit
+        # build a sequential palette, but soften the color differences by one unit
         plotargs = {
             "labeldistance": 1.2,
             "colors": cd.apol_navy_pal(data.size + 1, reverse=True)[:-1],
@@ -65,7 +65,7 @@ def hbarplot(data, categorical=False):
 
     This function creates a horizontal bar plot. If the bars represent
     categories, the default palette is used. If they do not, then you can
-    instead plot all bars the same colour, with a nice gradient fill.
+    instead plot all bars the same color, with a nice gradient fill.
 
     INPUTS:
         data - pandas Series for plotting
@@ -114,7 +114,7 @@ def hbarplot_round(plotdata, categorical=False):
 
     As with hbarplot, except the bars are bevelled. If the bars represent
     categories, the default palette is used. If they do not, then you can
-    instead plot all bars the same colour, with a nice gradient fill.
+    instead plot all bars the same color, with a nice gradient fill.
 
     INPUTS:
         data - pandas Series for plotting
@@ -159,8 +159,8 @@ def hbarplot_round(plotdata, categorical=False):
 
         # create the underlying bar
         if categorical:
-            next_colour = np.array([[apolPaletteRGB[counter]]])
-            im = axis.imshow(next_colour, extent=bar_extent, aspect="auto", zorder=1)
+            next_color = np.array([[apolPaletteRGB[counter]]])
+            im = axis.imshow(next_color, extent=bar_extent, aspect="auto", zorder=1)
         else:
             im = axis.imshow(
                 grad, cmap="apolBarGrad", extent=bar_extent, aspect="auto", zorder=1,
