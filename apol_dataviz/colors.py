@@ -1,11 +1,11 @@
-# colours.py - colour definitions for style
+# colors.py - color definitions for style
 
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt; plt.ion()
 import seaborn as sns; sns.set_color_codes()
 
-class ColourDefinitions:
+class ColorDefinitions:
 
     blueTeal  = "#00B3BF"
     shockPink = "#ED1F7A"
@@ -39,7 +39,7 @@ class ColourDefinitions:
         lightPurple,
     ]
 
-    apol_colour_lookup = {
+    apol_color_lookup = {
         "blueTeal": "#00B3BF",
         "navyBlue": "#081D48",
         "shockPink": "#ED1F7A",
@@ -62,9 +62,9 @@ class ColourDefinitions:
     def __init__(self):
 
         """
-        __init__ for ColourDefinitions
+        __init__ for ColorDefinitions
 
-        Adds matplotlib aliases for colours, registers colourmaps
+        Adds matplotlib aliases for colors, registers colormaps
 
         """
 
@@ -84,13 +84,13 @@ class ColourDefinitions:
 
         This method wraps calls to .generate_aliases and .generate_cmaps.
         Calling it will update the matplotlib definitions to use the
-        colours and palettes associated with this class
+        colors and palettes associated with this class
 
         """
 
-        # set up matplotlib aliases for our colours
+        # set up matplotlib aliases for our colors
         self.generate_aliases()
-        # create colourmaps and register them with matplotlib
+        # create colormaps and register them with matplotlib
         self.generate_cmaps()
 
     def show_palette(self):
@@ -105,17 +105,17 @@ class ColourDefinitions:
         sns.show_palette(self.apol_palette)
 
     @staticmethod
-    def add_colour_alias(cname, hexcode):
+    def add_color_alias(cname, hexcode):
 
         """
-        _add_colour_alias
+        _add_color_alias
 
-        This static method adds an alias for custom colours in
+        This static method adds an alias for custom colors in
         matplotlib plotting methods via a string designation
 
         INPUTS:
-            cname - name for the colour
-            hexcode - definition for the colour
+            cname - name for the color
+            hexcode - definition for the color
 
         """
 
@@ -151,37 +151,37 @@ class ColourDefinitions:
 
         return mpl.colors.ListedColormap(cmap_gradient)
 
-    def cget(self, colour_name):
+    def cget(self, color_name):
 
         """
         cget
 
-        Convenience method: looks up a colour in the definitions dict and
+        Convenience method: looks up a color in the definitions dict and
         returns the appropriate hexcode
 
         """
 
-        return self.apol_colour_lookup.get(colour_name)
+        return self.apol_color_lookup.get(color_name)
 
     def generate_aliases(self):
 
         """
         generate_aliases
 
-        This method registers all colours in .apol_colour_lookup with
+        This method registers all colors in .apol_color_lookup with
         matplotlib so that they can be used in plotting methods directly
 
         """
 
-        for cname, hexcode in self.apol_colour_lookup.items():
-            self.add_colour_alias(cname, hexcode)
+        for cname, hexcode in self.apol_color_lookup.items():
+            self.add_color_alias(cname, hexcode)
 
     def generate_cmaps(self):
 
         """
         generate_cmaps
 
-        This method generates two colour maps and registers them under
+        This method generates two color maps and registers them under
 
             apol (whiteTeal <--> blueTeal)
             apolBarGrad (greenTeal <--> blueTeal)
@@ -199,7 +199,7 @@ class ColourDefinitions:
             self.cget("greenTeal"), self.cget("blueTeal")
         )
 
-        # register these colourmaps
+        # register these colormaps
         mpl.cm.register_cmap(name="apol", cmap=self.apolCM)
         mpl.cm.register_cmap(name="apolBarGrad", cmap=self.barGradientCM)
 
