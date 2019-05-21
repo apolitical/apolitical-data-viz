@@ -3,6 +3,8 @@
 # Therefore be aware that importing these functions has that side-effect, i.e. the
 # Apolitical house style will be set upon import.
 
+import numpy as np
+
 from apol_dataviz.style import use_apol_style
 use_apol_style()
 
@@ -37,13 +39,13 @@ def doughnut(data, kind="categorical", sortvals=True, hole_radius=0.6):
         # build a sequential palette, but soften the color differences by one unit
         plotargs = {
             "labeldistance": 1.2,
-            "colors": cd.apol_navy_pal(data.size + 1, reverse=True)[:-1],
+            "colors": color_definitions.apol_navy_pal(data.size + 1, reverse=True)[:-1],
         }
 
     else:
         plotargs = {
             "labeldistance": 1.2,
-            "colors": [cd.blueTeal],
+            "colors": [color_definitions.blueTeal],
             "wedgeprops": {"linewidth": 3, "edgecolor": "white"},
         }
 
