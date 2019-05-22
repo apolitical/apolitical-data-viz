@@ -12,6 +12,7 @@ husl2hex = sns.external.husl.husl_to_hex
 cd = ColorDefinitions()
 cd.apply_definitions()
 
+
 def apol_teal_pal(N=4, reverse=False):
 
     """
@@ -34,6 +35,7 @@ def apol_teal_pal(N=4, reverse=False):
     pair = [pale, dark] if not reverse else [dark, pale]
     return sns.palettes.blend_palette(pair, N)
 
+
 def apol_navy_pal(N=4, reverse=False):
 
     """
@@ -55,6 +57,7 @@ def apol_navy_pal(N=4, reverse=False):
 
     pair = [pale, dark] if not reverse else [dark, pale]
     return sns.palettes.blend_palette(pair, N)
+
 
 def spaced_hue_palette(n_col=5, base_color=cd.blueTeal):
 
@@ -88,6 +91,7 @@ def spaced_hue_palette(n_col=5, base_color=cd.blueTeal):
 
     return hexcodes
 
+
 def spaced_saturation_palette(n_col=5, base_color=cd.blueTeal):
 
     """
@@ -115,6 +119,7 @@ def spaced_saturation_palette(n_col=5, base_color=cd.blueTeal):
     hexcodes = [hexcode for hexcode in hexcode_generator]
 
     return hexcodes
+
 
 def spaced_lightness_palette(n_col=5, base_color=cd.blueTeal):
 
@@ -144,6 +149,7 @@ def spaced_lightness_palette(n_col=5, base_color=cd.blueTeal):
 
     return hexcodes
 
+
 def spaced_brightness_palette(n_col=5, base_color=cd.blueTeal):
 
     """
@@ -172,6 +178,7 @@ def spaced_brightness_palette(n_col=5, base_color=cd.blueTeal):
 
     return hexcodes
 
+
 def opposing_hue_palette(n_col=5, base_color=cd.blueTeal):
 
     """
@@ -199,16 +206,16 @@ def opposing_hue_palette(n_col=5, base_color=cd.blueTeal):
 
     colors_per_arm = n_col // 2
 
-    require_midpoint = bool(n_col % 2) # do we need a midpoint?
+    require_midpoint = bool(n_col % 2)  # do we need a midpoint?
 
     saturations = np.linspace(S, 100, colors_per_arm + 1)[:-1]
     lightnesses = np.linspace(L, 100, colors_per_arm + 1)[:-1]
 
-    arm1 = zip([H]*colors_per_arm, saturations, lightnesses)
-    arm2 = zip([H2]*colors_per_arm, saturations[::-1], lightnesses[::-1])
+    arm1 = zip([H] * colors_per_arm, saturations, lightnesses)
+    arm2 = zip([H2] * colors_per_arm, saturations[::-1], lightnesses[::-1])
 
-    arm1hex = [husl2hex(h,s,l) for h,s,l in arm1]
-    arm2hex = [husl2hex(h,s,l) for h,s,l in arm2]
+    arm1hex = [husl2hex(h, s, l) for h, s, l in arm1]
+    arm2hex = [husl2hex(h, s, l) for h, s, l in arm2]
 
     if not require_midpoint:
         return arm1hex + arm2hex

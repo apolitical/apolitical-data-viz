@@ -1,4 +1,3 @@
-
 def get_ts_tick_labels(df):
 
     """
@@ -21,15 +20,16 @@ def get_ts_tick_labels(df):
     is_first_week_of_month = df.index.day <= 7
     is_first_week_of_year = df.index.dayofyear <= 7
 
-    tick_labs[is_first_week_of_month] = (
-        df.index[is_first_week_of_month].strftime("%d\n%b")
+    tick_labs[is_first_week_of_month] = df.index[is_first_week_of_month].strftime(
+        "%d\n%b"
     )
 
-    tick_labs[is_first_week_of_year] = (
-        df.index[is_first_week_of_year].strftime('%d\n%b\n%Y')
+    tick_labs[is_first_week_of_year] = df.index[is_first_week_of_year].strftime(
+        "%d\n%b\n%Y"
     )
 
     return tick_labs
+
 
 def get_ts_tick_labels_monthly(df):
 
@@ -53,12 +53,10 @@ def get_ts_tick_labels_monthly(df):
     is_first_week_of_month = df.index.day <= 7
     is_first_week_of_year = df.index.dayofyear <= 7
 
-    tick_labs[is_first_week_of_month] = (
-        df.index[is_first_week_of_month].strftime("%b")
-    )
+    tick_labs[is_first_week_of_month] = df.index[is_first_week_of_month].strftime("%b")
 
-    tick_labs[is_first_week_of_year] = (
-        df.index[is_first_week_of_year].strftime('%b\n%Y')
+    tick_labs[is_first_week_of_year] = df.index[is_first_week_of_year].strftime(
+        "%b\n%Y"
     )
 
     return tick_labs
