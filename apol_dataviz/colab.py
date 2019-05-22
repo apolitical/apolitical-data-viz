@@ -4,6 +4,7 @@ import sys
 from requests import get
 from zipfile import ZipFile
 
+
 def download_lato_font(verbose=False):
 
     RUNNING_IN_COLAB = "google.colab" in sys.modules
@@ -42,4 +43,3 @@ def download_lato_font(verbose=False):
 
     if verbose:
         print("... complete.")
-    

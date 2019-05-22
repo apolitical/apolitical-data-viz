@@ -1,10 +1,15 @@
 import numpy as np
 import matplotlib as mpl
-import matplotlib.pyplot as plt; plt.ion()
-import seaborn as sns; sns.set_color_codes()
+import matplotlib.pyplot as plt
+
+plt.ion()
+import seaborn as sns
+
+sns.set_color_codes()
 
 from apol_dataviz.colab import download_lato_font
 from apol_dataviz.colors import ColorDefinitions
+
 
 def use_apol_style():
 
@@ -15,10 +20,10 @@ def use_apol_style():
 
     """
 
-    download_lato_font() # takes no action if not running in a Google Colab notebook
+    download_lato_font()  # takes no action if not running in a Google Colab notebook
 
     cd = ColorDefinitions()
-    cd.apply_definitions()   # register colors and colormaps with matplotlib
+    cd.apply_definitions()  # register colors and colormaps with matplotlib
 
     apol_labelsize = 16
     apol_titlesize = 18
@@ -63,6 +68,7 @@ def use_apol_style():
 
     plt.style.use("default")
     plt.style.use(APOLITICAL_HOUSE_STYLE)
+
 
 if __name__ == "__main__":
     # if style.py is directly executed, set all the definitions

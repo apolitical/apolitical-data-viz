@@ -2,27 +2,32 @@
 
 import numpy as np
 import matplotlib as mpl
-import matplotlib.pyplot as plt; plt.ion()
-import seaborn as sns; sns.set_color_codes()
+import matplotlib.pyplot as plt
+
+plt.ion()
+import seaborn as sns
+
+sns.set_color_codes()
+
 
 class ColorDefinitions:
 
-    blueTeal  = "#00B3BF"
+    blueTeal = "#00B3BF"
     shockPink = "#ED1F7A"
     strongPurple = "#6B3ECD"
     paleOrange = "#FF7550"
     mintGreen = "#5ECE8A"
     goldenYellow = "#FCCA4C"
-    plotGrey  = "#B7C5D5"
-    navyBlue  = "#081D48"
+    plotGrey = "#B7C5D5"
+    navyBlue = "#081D48"
     brightBlue = "#1772B8"
     strongRed = "#DC3C43"
     greenTeal = "#46B8A6"
     lightPurple = "#B75BB4"
 
     whiteTeal = "#EBF6F7"
-    chartLabels  = "#565A5C"
-    chartDemarcation = "#081D48" # 0.2 alpha for borders, 0.08 for gridlines
+    chartLabels = "#565A5C"
+    chartDemarcation = "#081D48"  # 0.2 alpha for borders, 0.08 for gridlines
 
     apol_palette = [
         blueTeal,

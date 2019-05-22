@@ -4,14 +4,19 @@
 # Apolitical house style will be set upon import.
 
 from apol_dataviz.style import use_apol_style
+
 use_apol_style()
 
 from apol_dataviz.colors import ColorDefinitions
+
 color_definitions = ColorDefinitions()
 
 import numpy as np
-import matplotlib.pyplot as plt; plt.ion()
+import matplotlib.pyplot as plt
+
+plt.ion()
 import seaborn as sns
+
 
 def doughnut(data, kind="categorical", sortvals=True, hole_radius=0.6):
 
@@ -58,9 +63,10 @@ def doughnut(data, kind="categorical", sortvals=True, hole_radius=0.6):
     axis = plot_data.plot.pie(**plotargs)
 
     # add the central hole to turn it into a doughnut
-    axis.add_artist(plt.Circle((0,0), hole_radius, color="white"))
+    axis.add_artist(plt.Circle((0, 0), hole_radius, color="white"))
 
     return axis
+
 
 def hbarplot(data, categorical=False):
 
@@ -91,7 +97,7 @@ def hbarplot(data, categorical=False):
 
     bars = axis.patches
 
-    grad = np.atleast_2d(np.linspace(0,1,256))
+    grad = np.atleast_2d(np.linspace(0, 1, 256))
 
     xlim = axis.get_xlim()
     ylim = axis.get_ylim()
@@ -101,7 +107,11 @@ def hbarplot(data, categorical=False):
         x, y = bar.get_xy()
         w, h = bar.get_width(), bar.get_height()
         axis.imshow(
-            grad, cmap="apolBarGrad", extent=[x,x+w,y,y+h], aspect="auto", zorder=1,
+            grad,
+            cmap="apolBarGrad",
+            extent=[x, x + w, y, y + h],
+            aspect="auto",
+            zorder=1,
         )
 
     axis.set_xlim(xlim)
@@ -110,6 +120,7 @@ def hbarplot(data, categorical=False):
     axis.grid(axis="y")
 
     return axis
+
 
 def hbarplot_round(plotdata, categorical=False):
 
@@ -130,20 +141,20 @@ def hbarplot_round(plotdata, categorical=False):
         axis - matplotlib axis object
     """
 
-    data = plotdata.iloc[::-1] # reverse order
+    data = plotdata.iloc[::-1]  # reverse order
 
     fig, axis = plt.subplots()
 
     # we want the bar to have a normal aspect ratio, otherwise the rounding fails
-    h = 10**np.floor(np.log10(data.max()))
+    h = 10 ** np.floor(np.log10(data.max()))
 
     # base the rounding size on bar aspect ratio
-    rounding_size = (h * data.max() * 5 / data.size)**0.5 / 16
+    rounding_size = (h * data.max() * 5 / data.size) ** 0.5 / 16
 
     padding = 0.3
     clipbox_width = 1.1 * data.max() + padding
 
-    grad = np.atleast_2d(np.linspace(0,1,256))
+    grad = np.atleast_2d(np.linspace(0, 1, 256))
 
     counter = 0
 
@@ -155,11 +166,11 @@ def hbarplot_round(plotdata, categorical=False):
         w = value
         y = counter * 2 * h
 
-        bar_extent = [0, w, y, y+h]
+        bar_extent = [0, w, y, y + h]
 
-        yticks.append(counter*2*h + h/2)
+        yticks.append(counter * 2 * h + h / 2)
         yticknames.append(barname)
-        counter+=1
+        counter += 1
 
         # create the underlying bar
         if categorical:
@@ -167,18 +178,20 @@ def hbarplot_round(plotdata, categorical=False):
             im = axis.imshow(next_color, extent=bar_extent, aspect="auto", zorder=1)
         else:
             im = axis.imshow(
-                grad, cmap="apolBarGrad", extent=bar_extent, aspect="auto", zorder=1,
+                grad, cmap="apolBarGrad", extent=bar_extent, aspect="auto", zorder=1
             )
 
         # round the edges by clipping them
-        boxstyle = mpl.patches.BoxStyle("round", pad=padding, rounding_size=rounding_size)
+        boxstyle = mpl.patches.BoxStyle(
+            "round", pad=padding, rounding_size=rounding_size
+        )
 
         fancybox = mpl.patches.FancyBboxPatch(
-            (-clipbox_width + w - 2*padding, y + padding),
-            width = clipbox_width,
-            height = h - 2 * padding,
-            transform = axis.transData,
-            boxstyle = boxstyle,
+            (-clipbox_width + w - 2 * padding, y + padding),
+            width=clipbox_width,
+            height=h - 2 * padding,
+            transform=axis.transData,
+            boxstyle=boxstyle,
         )
 
         im.set_clip_path(fancybox)
@@ -186,12 +199,13 @@ def hbarplot_round(plotdata, categorical=False):
     axis.set_yticks(yticks)
     axis.set_yticklabels(yticknames)
 
-    axis.set_xlim(0, data.max()*1.1)
-    axis.set_ylim(-h/2, counter*2*h)
+    axis.set_xlim(0, data.max() * 1.1)
+    axis.set_ylim(-h / 2, counter * 2 * h)
 
     axis.grid(axis="y")
 
     return axis
+
 
 def heatmap(data):
 
