@@ -12,7 +12,7 @@ To install from the command line via [pip](https://pip.pypa.io/en/stable/), do:
 
 To upgrade to the latest version via `pip` do:
 
-`pip install easy-geoparsing --upgrade`
+`pip install apolitical-data-viz --upgrade`
 
 To use via [pipenv](https://docs.pipenv.org/en/latest/) put the following in your Pipfile:
 
@@ -29,7 +29,7 @@ If you don't yet have `pipenv`, you can use `pip` to install it from the command
 
 `pip install pipenv --upgrade`
 
-Then, in the top level directory of this repository, `easy-geoparsing`, do:
+Then, in the top level directory of this repository, `apolitical-data-viz`, do:
 
 `pipenv install --dev`
 
