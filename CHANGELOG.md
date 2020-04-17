@@ -1,9 +1,13 @@
-Change log
----
+CHANGELOG
+=========
 
 ### upcoming
 
 - nothing currently planned
+
+### 1.0.1
+
+- updated dependencies
 
 ### 1.0.0
 
